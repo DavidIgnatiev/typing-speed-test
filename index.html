@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/logo-small.svg" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="logo">
+          <a href="#"><img src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/logo-large.svg" alt=""></a>
+        </div>
+
+
+        <div class="best-result">
+          <img src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-personal-best.svg" alt="">
+          <p>Personal Best: <span class="best-wpm">0</span> <span>WPM</span></p>
+        </div>
+      </header>
+
+
+      <section class="info-and-modes">
+        <div class="info | stats-styles">
+          <p class="right-line">WPM: <span class="wpm-data">0</span></p>
+          <p class="right-line">Accuracy: <span class="accuracy-data">100%</span></p>
+          <p>Time: <span class="timer-data">60</span></p>
+        </div>
+
+
+        <div class="modes">
+          <div class="difficulty | right-line">
+            <p>Difficulty: </p>
+            <button class="difficulty-button" value="easy">Easy</button>
+            <button class="difficulty-button" value="medium">Medium</button>
+            <button class="difficulty-button" value="hard">Hard</button>
+          </div>
+
+
+          <div class="mode">
+            <p>Mode: </p>
+            <button class="mode-choice" data-mode="timed">Timed(60s)</button>
+            <button class="mode-choice" data-mode="nonstop">NonStop</button>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+         <div class="first-congrat | first-try-congrat">
+
+          <div class="first-try-text">
+            <img  class="congrat-tick-image | congrat-image" src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-completed.svg" alt="">
+            <h1 class="white-text">Baseline Established</h1>
+            <p>You've set the bar. Now the real challenge begins - time to beat it</p>
+          </div>
+
+          <div class="first-try-stats | stats-styles">
+            <div class="first-try-stat">WPM: <span class="wpm-data-congrat"></span></div>
+            <div class="first-try-stat">Accuracy: <span class="accuracy-data-congrat"></span></div>
+            <div class="first-try-stat">Characters: <span class="characters-data"><span class="correct-characters">0</span>/<span class="wrong-characters">0</span></span></div>
+          </div>
+
+          <button class="beat-score | restart">
+            Beat this score
+            <img src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-restart.svg" alt="">
+          </button>
+        </div> 
+
+
+         <div class="new-record-congrat | first-try-congrat">
+
+          <div class="first-try-text">
+            <img  class="congrat-image" src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-new-pb.svg" alt="">
+            <h1 class="white-text">High Score Smashed!</h1>
+            <p>You're getting faster. That was incredible typing.</p>
+          </div>
+
+          <div class="first-try-stats | stats-styles">
+            <div class="first-try-stat">WPM: <span class="wpm-data-congratNew"></span></div>
+            <div class="first-try-stat">Accuracy: <span class="accuracy-data-congratNew"></span></div>
+            <div class="first-try-stat">Characters: <span class="characters-data"><span class="congrat-correct | correct-characters">0</span>/<span class="congrat-wrong | wrong-characters">0</span></span></div>
+          </div>
+
+          <button class="beat-score | restart">
+            Beat this score
+            <img src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-restart.svg" alt="">
+          </button>
+        </div>
+
+
+
+
+
+      <section class="typing-area">
+
+    
+
+
+
+        <div class="text-area" readonly>
+
+        </div>
+
+        <div class="preparation-block">
+          <h1 class="preparation-title">Choose the difficulty</h1>
+          <img class="preparation-image" src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/arrow.png" alt="">
+        </div>
+      </section>
+
+      <button class="restart">
+        Restart Test
+        <img src="./typing-speed-test-main (1)/typing-speed-test-main/assets/images/icon-restart.svg" alt="">
+      </button>
+    </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
