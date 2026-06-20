@@ -87,6 +87,7 @@ textarea.addEventListener("click", () => {
 
 
 function difficultyIsChosen(event) {
+    restart();
     let pressedBtn = null;
 
 
@@ -172,6 +173,7 @@ document.addEventListener("keydown", (event) => {
     if (event.key === " " || event.key === "Enter") {
         event.preventDefault();
     }
+    if (event.key === "CapsLock") return;
 
     if (!focusedOnTyping) return;
 
