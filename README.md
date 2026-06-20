@@ -4,11 +4,11 @@ A modern and responsive typing speed trainer built with pure JavaScript (Vanilla
 
 # ✨ Project Features
 
-* **Three Difficulty Levels (Easy, Medium, Hard):** Each level offers a unique set of texts — from simple short phrases to complex technical texts with special characters, mathematical formulas, and terminal commands.
+* **Three Difficulty Levels (Easy, Medium, Hard):** Each level offers a unique set of texts - from simple short phrases to complex technical texts with special characters, mathematical formulas, and terminal commands.
 * **Two Training Modes:**
-    * `Timed (60s)` — a classic time test with dynamic timer color changes (green ➔ yellow ➔ red) as the deadline approaches.
-    * `NonStop` — an endless mode for continuous practice, where new texts load smoothly and infinitely one after another in real-time.
-* **Instant Analytics:** Accurate calculation of speed (WPM — words per minute) and accuracy metrics right while you type.
+    * `Timed (60s)` - a classic time test with dynamic timer color changes (green ➔ yellow ➔ red) as the deadline approaches.
+    * `NonStop` - an endless mode for continuous practice, where new texts load smoothly and infinitely one after another in real-time.
+* **Instant Analytics:** Accurate calculation of speed (WPM - words per minute) and accuracy metrics right while you type.
 * **High Score Saving:** Integration with the browser's local storage (`localStorage`) allows saving and displaying your best result (`Personal Best`) even after refreshing the page.
 * **Interactive UI:** * Dynamic wrapping of each letter of the text in `<span>` tags via `DocumentFragment` for character-by-character highlighting (green for correct keys, red with an underline for mistakes).
     * A pulsing custom cursor to indicate the current typing position.
@@ -18,9 +18,9 @@ A modern and responsive typing speed trainer built with pure JavaScript (Vanilla
 
 ## 🛠️ Tech Stack
 
-* **HTML5** — Semantic markup, use of document fragments for performance optimization.
-* **CSS3** — Custom Properties (variables for quick theme changes), Flexbox for aligning status bars, CSS animations (`@keyframes`), custom stylized scrollbar.
-* **JavaScript (ES6+)** — Keyboard event handling, interval timers (`setInterval`), element class management, working with built-in browser storage.
+* **HTML5** - Semantic markup, use of document fragments for performance optimization.
+* **CSS3** - Custom Properties (variables for quick theme changes), Flexbox for aligning status bars, CSS animations (`@keyframes`), custom stylized scrollbar.
+* **JavaScript (ES6+)** - Keyboard event handling, interval timers (`setInterval`), element class management, working with built-in browser storage.
 
 ## 📂 Project Structure
 
