@@ -1,4 +1,4 @@
-// Наши текста
+
 let text = {
     "easy": [
         "The sun was setting behind the hills when Tom decided to go for a walk. He put on his jacket, grabbed his keys, and stepped outside. The air was cool and fresh after the rain. Leaves on the trees had turned golden and red. He walked slowly down the quiet street, listening to the birds. A dog barked somewhere in the distance. Children were playing in the park near the corner. Tom smiled and kept walking. He loved evenings like this, when the whole world felt calm and still. After an hour he turned back home, feeling relaxed and happy.",
@@ -18,7 +18,7 @@ let text = {
         "The RSA encryption algorithm relies on the mathematical difficulty of factoring large integers. Given two primes p = 61 and q = 53, compute n = p × q = 3,233. The totient φ(n) = (p−1)(q−1) = 3,120. Choose e = 17, where gcd(17, 3120) = 1. The private key d satisfies d × e ≡ 1 (mod φ(n)), giving d = 2,753. To encrypt message M = 65: C = M^e mod n = 65^17 mod 3,233 = 2,790. To decrypt: M = C^d mod n = 2,790^2,753 mod 3,233 = 65. Real-world RSA uses key sizes ≥ 2,048 bits, making brute-force attacks computationally infeasible even with today's fastest supercomputers running at ~10^18 FLOPS/s.",
     ]
 };
-// Переменные
+
 let modes = document.querySelector(".modes");
 let textarea = document.querySelector(".text-area");
 let preparationBlock = document.querySelector(".preparation-block");
@@ -84,26 +84,32 @@ textarea.addEventListener("click", () => {
     }
 });
 
-// Функция при выборе сложности
+
+
 function difficultyIsChosen(event) {
     let pressedBtn = null;
-    if (!smallScreen.matches) {
-        pressedBtn = event.target.closest(".difficulty-button");;
-        if (!pressedBtn) return;
-    } else {
+
+
+    if (smallScreen.matches) {
+
+
+        if (event.type === "click") return;
+
         pressedBtn = event.target.options[event.target.selectedIndex];
         if (!pressedBtn.classList.contains("difficulty-button")) return;
-    }
+    } else {
 
+        pressedBtn = event.target.closest(".difficulty-button");
+        if (!pressedBtn) return;
+    }
 
     if (!pressedBtn.classList.contains("chosen")) {
         let selected = modes.querySelectorAll(".chosen");
-        for(let elem of selected) {
+        for (let elem of selected) {
             elem.classList.remove('chosen');
         }
         pressedBtn.classList.add("chosen");
     }
-
 
     nonstopMode = false;
 
@@ -114,36 +120,34 @@ function difficultyIsChosen(event) {
     changeAccuracyColor(accuracy);
     wpm.textContent = 0;
 
-
     let difficulty = null;
-    if (!smallScreen) {
+    if (!smallScreen.matches) {
         difficulty = event.target.value;
     } else {
         difficulty = pressedBtn.value;
     }
+    console.log(difficulty);
 
     let chosenText = text[difficulty][Math.floor(Math.random() * text[difficulty].length)];
 
     preparationBlock.style.display = "none";
     splitAndSpan(textarea, chosenText);
     focusedOnTyping = true;
-    
+
     currentLetterPosition = 0;
     addBackground(textarea, currentLetterPosition);
 
-    // В самом конце функции, после addBackground(...)
-    if (pressedBtn && typeof pressedBtn.blur === 'function') {
-        pressedBtn.blur(); // Снимаем фокус с кнопки
+
+    if (event.target && typeof event.target.blur === 'function') {
+        event.target.blur();
     }
-    // Где-то в конце функции difficultyIsChosen
-    mobileInput.focus(); // Поднимаем клавиатуру сразу после старта!
 }
 
 modes.addEventListener("click", difficultyIsChosen);
 
-// Добавляем подсвечивание последней буквы при ожидании печати
+
 function addBackground(area, index) {
-    // Убирать выделение только с предыдущего символа
+
     for (let item of area.childNodes) {
         if (item.classList.contains("current-letter")) {
             item.classList.remove("current-letter");
@@ -154,35 +158,35 @@ function addBackground(area, index) {
 
 
 
-// БАГ: При нажатии на пробел(Space) все начинается с начала, появляется новый текст, не знаю как исправить
 
-// Собираем все текста в один массив, для того чтобы при NonStop mode легко их добавлять в typing area
+
+
 for (let texts of Object.values(text)) {
     allTexts.push(...texts);
 }
 
 
-// При печати
+
 document.addEventListener("keydown", (event) => {
-    
+
     if (event.key === " " || event.key === "Enter") {
         event.preventDefault();
     }
 
     if (!focusedOnTyping) return;
-    
+
     startTimer();
     changeAccuracyColor(accuracy);
     totalTypedCharacters++;
     needsLetteresToScroll++;
     let currentSpanWithLetter = textarea.childNodes[currentLetterPosition];
     if (event.key == currentSpanWithLetter.textContent) {
-        addBackground(textarea, currentLetterPosition+1);
+        addBackground(textarea, currentLetterPosition + 1);
         currentLetterPosition++;
         currentSpanWithLetter.classList.add("letter-right");
         correct++;
     } else {
-        addBackground(textarea, currentLetterPosition+1);
+        addBackground(textarea, currentLetterPosition + 1);
         currentLetterPosition++;
         currentSpanWithLetter.classList.add("letter-wrong");
         errors++;
@@ -215,7 +219,7 @@ document.addEventListener("keydown", (event) => {
 
 
         if (typedCharactersOnCurrentText >= 350 && canAddText) {
-            splitAndSpan(textarea, allTexts[currentTextIndex+1]);
+            splitAndSpan(textarea, allTexts[currentTextIndex + 1]);
             canAddText = false;
         }
     }
@@ -224,12 +228,12 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-// Сохранять наш рекорд в памяти
+
 bestWPM.textContent = localStorage.getItem("best-score");
 
-// Показывать Words per minute
+
 function showWPM() {
-    let result = Math.floor((totalTypedCharacters - errors)/5);
+    let result = Math.floor((totalTypedCharacters - errors) / 5);
     wpm.textContent = result;
     wpmCongrat.textContent = result;
     wmpCongratNew.textContent = result;
@@ -242,7 +246,7 @@ function showWPM() {
 
 
 function showAccuracy() {
-    let result = Math.floor((correct / totalTypedCharacters)*100);
+    let result = Math.floor((correct / totalTypedCharacters) * 100);
     accuracy.textContent = result + "%";
     accuracyCongrat.textContent = result + "%";
     accuracyNewCongrat.textContent = result + "%";
@@ -251,7 +255,7 @@ function showAccuracy() {
 
 
 
-// Добавляем текст
+
 function splitAndSpan(area, text) {
     if (!nonstopMode) {
         area.innerHTML = "";
@@ -266,7 +270,7 @@ function splitAndSpan(area, text) {
     area.append(fragment);
 }
 
-// Запускаем таймер
+
 function startTimer() {
     if (!focusedOnTyping || nonstopMode) {
         return;
@@ -281,7 +285,7 @@ function startTimer() {
             } else {
                 showFirstCongrat();
             }
-            clearTime(); 
+            clearTime();
             changeTime();
         }
         changeTimeColor(seconds);
@@ -313,7 +317,7 @@ function changeTimeColor(seconds) {
 
 function changeAccuracyColor(accuracy) {
     let accuracyNumber = accuracy.textContent;
-    let accuracyData = Number(accuracyNumber.slice(0, accuracyNumber.length-1));
+    let accuracyData = Number(accuracyNumber.slice(0, accuracyNumber.length - 1));
     if (accuracyData < 75 && accuracyData > 50) {
         accuracy.style.color = "hsl(49, 85%, 70%)";
         accuracyCongrat.style.color = "hsl(49, 85%, 70%)";
@@ -373,11 +377,11 @@ function modeChoose(event) {
     } else {
         chosenMode = event.target.options[event.target.selectedIndex];
     }
-    
+
 
     if (!chosenMode.classList.contains("chosen")) {
         let selected = mode.querySelectorAll(".chosen");
-        for(let elem of selected) {
+        for (let elem of selected) {
             elem.classList.remove('chosen');
         }
         chosenMode.classList.add("chosen");
@@ -454,14 +458,14 @@ function showNewRecord() {
 
 
 
-// Media requests
+
 
 function responsiveMode() {
     for (let i = 0; i < 3; i++) {
         let option = document.createElement("option");
-        option.textContent = difficultyBlock.children[i+1].textContent;
+        option.textContent = difficultyBlock.children[i + 1].textContent;
         option.classList.add("difficulty-button");
-        option.setAttribute("value", (difficultyBlock.children[i+1].textContent).toLocaleLowerCase())
+        option.setAttribute("value", (difficultyBlock.children[i + 1].textContent).toLocaleLowerCase())
         selectionDiff.append(option);
     }
     difficultyBlock.style.display = "none";
@@ -470,7 +474,7 @@ function responsiveMode() {
 
     for (let i = 0; i < 2; i++) {
         let option = document.createElement("option");
-        option.textContent = mode.children[i+1].textContent;
+        option.textContent = mode.children[i + 1].textContent;
         option.classList.add(".mode-choice");
         if (i == 0) {
             option.setAttribute("data-mode", "timed");
@@ -487,7 +491,7 @@ function responsiveMode() {
     logoImage.src = "./images/logo-small.svg";
     personalBestSmall.childNodes[0].remove();
 
-}   
+}
 
 if (smallScreen.matches) {
     responsiveMode();

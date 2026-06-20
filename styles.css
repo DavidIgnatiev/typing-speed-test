@@ -16,7 +16,7 @@
     
 }
 
-/* General styles */
+
 
 html {
     scrollbar-color: hsl(214, 100%, 55%) hsl(0, 0%, 7%);
@@ -69,9 +69,9 @@ button {
 }
 
 
-/* Main styles*/
 
-/* header */
+
+
 .header {
     display: flex;
     align-items: center;
@@ -89,7 +89,7 @@ button {
 }
 
 
-/* Information and modes section */
+
 .info-and-modes {
     display: flex;
     align-items: center;
@@ -180,7 +180,7 @@ button {
     color: var(--clr-blue-400);
 }
 
-/* Chosen mode and difficulty */
+
 .chosen {
     color: var(--clr-blue-600);
     border: 1px solid var(--clr-blue-400) !important;
@@ -203,7 +203,7 @@ select {
     background-color: var(--clr-neut-800);
     color: var(--clr-neut-0);
     font-family: var(--ff);
-    /* font-weight: bold; */
+    
     margin-bottom: 20px;
     
 }
@@ -215,7 +215,7 @@ select {
     gap: 20px;
 }
 
-/* Typing area */
+
 .typing-area {
     width: 100%;
     margin-top: 30px;
@@ -432,5 +432,5 @@ select {
     position: absolute;
     opacity: 0;
     z-index: -999;
-    pointer-events: none; /* чтобы случайно не кликнуть по нему */
+    pointer-events: none; 
 }
