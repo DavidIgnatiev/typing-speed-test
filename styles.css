@@ -324,7 +324,7 @@ select {
 
 .first-try-congrat::after {
     content: '';
-    background-image: url("./typing-speed-test-main (1)/typing-speed-test-main/assets/images/pattern-star-1.svg");
+    background-image: url("./images/pattern-star-1.svg");
     background-repeat: no-repeat;
     position: absolute;
     width: 84px;
@@ -335,7 +335,7 @@ select {
 
 .first-try-congrat::before {
     content: '';
-    background-image: url("./typing-speed-test-main (1)/typing-speed-test-main/assets/images/pattern-star-2.svg");
+    background-image: url("./images/pattern-star-2.svg");
     background-repeat: no-repeat;
     position: absolute;
     width: 32px;
@@ -350,7 +350,7 @@ select {
 
 .new-record-congrat::after {
     content: '';
-    background-image: url("./typing-speed-test-main (1)/typing-speed-test-main/assets/images/pattern-confetti.svg");
+    background-image: url("./images/pattern-confetti.svg");
     background-repeat: repeat-x;
     position: absolute;
     width: 100vw;
@@ -428,3 +428,9 @@ select {
     color: var(--clr-red);
 }
 
+.mobile-hidden-input {
+    position: absolute;
+    opacity: 0;
+    z-index: -999;
+    pointer-events: none; /* чтобы случайно не кликнуть по нему */
+}

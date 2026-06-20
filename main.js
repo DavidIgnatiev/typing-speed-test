@@ -76,8 +76,13 @@ let selectionMode = document.createElement("select");
 let logoImage = document.querySelector(".logo img");
 let personalBestSmall = document.querySelector(".best-result p");
 
+let mobileInput = document.querySelector(".mobile-hidden-input");
 
-
+textarea.addEventListener("click", () => {
+    if (focusedOnTyping) {
+        mobileInput.focus();
+    }
+});
 
 // Функция при выборе сложности
 function difficultyIsChosen(event) {
@@ -116,7 +121,6 @@ function difficultyIsChosen(event) {
     } else {
         difficulty = pressedBtn.value;
     }
-    console.log(difficulty);
 
     let chosenText = text[difficulty][Math.floor(Math.random() * text[difficulty].length)];
 
@@ -131,6 +135,8 @@ function difficultyIsChosen(event) {
     if (pressedBtn && typeof pressedBtn.blur === 'function') {
         pressedBtn.blur(); // Снимаем фокус с кнопки
     }
+    // Где-то в конце функции difficultyIsChosen
+    mobileInput.focus(); // Поднимаем клавиатуру сразу после старта!
 }
 
 modes.addEventListener("click", difficultyIsChosen);
@@ -148,12 +154,6 @@ function addBackground(area, index) {
 
 
 
-// При Enter страница прокручивается, нам это не надо, сбивает фокус с печати
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        event.preventDefault();
-    }
-})
 // БАГ: При нажатии на пробел(Space) все начинается с начала, появляется новый текст, не знаю как исправить
 
 // Собираем все текста в один массив, для того чтобы при NonStop mode легко их добавлять в typing area
@@ -163,8 +163,12 @@ for (let texts of Object.values(text)) {
 
 
 // При печати
-document.addEventListener("keypress", (event) => {
+document.addEventListener("keydown", (event) => {
     
+    if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+    }
+
     if (!focusedOnTyping) return;
     
     startTimer();
@@ -268,7 +272,6 @@ function startTimer() {
         return;
     }
     if (timerId !== null) return;
-    console.log("Запуск");
     timerId = setInterval(() => {
         if (!focusedOnTyping) clearTime(timerId);
         if (seconds <= 1) {
@@ -369,7 +372,6 @@ function modeChoose(event) {
         chosenMode = event.target.closest(".mode-choice");
     } else {
         chosenMode = event.target.options[event.target.selectedIndex];
-        console.log(chosenMode);
     }
     
 
@@ -482,8 +484,7 @@ function responsiveMode() {
     modes.append(selectionMode);
 
 
-    logoImage.src = "./typing-speed-test-main (1)/typing-speed-test-main/assets/images/logo-small.svg"
-        console.log(personalBestSmall.childNodes[0]);
+    logoImage.src = "./images/logo-small.svg";
     personalBestSmall.childNodes[0].remove();
 
 }   
